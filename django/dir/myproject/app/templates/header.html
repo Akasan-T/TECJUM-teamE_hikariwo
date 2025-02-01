@@ -1,0 +1,12 @@
+<header>
+    <nav>
+      <ul>
+        {% for tab in active_tabs %}
+          <li><a href="{{ tab.url }}">{{ tab.name }}</a></li>
+        {% empty %}
+          <li>表示するタブはありません</li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </header>
+  
