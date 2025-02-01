@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>会員登録</title>
+    <!-- 自作のCSSやJSをリンク -->
+    <link rel="stylesheet" href="/static/css/custom.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Site!</h1>
+    </header>
+    <main>
+        <section class="register-section">
+            <h2>新規会員登録</h2>
+            <!-- Djangoのエラーメッセージ表示（必要に応じて） -->
+            {% if form.errors %}
+                <div class="error">
+                    <p>入力内容に誤りがあります。以下を確認してください。</p>
+                    {{ form.errors }}
+                </div>
+            {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                <!-- 自分のHTML構造に合わせてフォームフィールドを配置 -->
+                <div class="form-group">
+                    <label for="id_username">ユーザー名</label>
+                    {{ form.username }}
+                </div>
+                <div class="form-group">
+                    <label for="id_password1">パスワード</label>
+                    {{ form.password1 }}
+                </div>
+                <div class="form-group">
+                    <label for="id_password2">パスワード（確認用）</label>
+                    {{ form.password2 }}
+                </div>
+                <button type="submit">登録する</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 My Site</p>
+    </footer>
+</body>
+</html>
