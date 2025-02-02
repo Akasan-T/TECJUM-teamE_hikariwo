@@ -180,7 +180,9 @@ footer{
     position: relative;
     transform: translateX(-50%);
     margin: 30px 0;
+    color: #ffffff;
 }
+
 /* -------------REGISTRATION-------- */
 /* ------------------------------ */
 /* -------------GENRE-------------- */
@@ -200,7 +202,7 @@ footer{
     background: currentColor;
     border-radius: 0.1em;
     position: relative;
-  }
+}
 
 .plus_icon::before {
 content: '';
@@ -227,6 +229,11 @@ transform: rotate(90deg);
     box-shadow: 0 4px 5px 0 #000;
     border-radius: 10px;
 }
+
+.nutrition{      /* 食事&栄養修正 */
+    padding-right: 25%;
+}
+
 .before_click ul li{
     height: 28px;
 }
@@ -300,4 +307,5 @@ transform: rotate(90deg);
     background-color: #5AC2DC;
     opacity: 0.7;
     border-radius: 10px;
+    color: #FFFFFF;
 }

@@ -106,10 +106,9 @@
   display: none !important;
 }
 
-:where(:focus-visible) {
-  outline: 3px solid CanvasText;
-  box-shadow: 0 0 0 5px Canvas;
-  outline-offset: 1px;
+input:focus {
+  border-color: #50A8E2; /* フォーカス時に青色の枠に 赤堀変更*/
+　box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
 }
 
 :where(:focus-visible, :target) {
