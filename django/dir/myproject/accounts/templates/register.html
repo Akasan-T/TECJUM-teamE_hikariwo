@@ -1,31 +1,77 @@
-<!-- accounts/templates/register.html -->
+{% load static %}
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 静的ファイルのパスに変更 -->
+    <link rel="stylesheet" href="{% static 'css/24reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>新規登録</title>
 </head>
 <body>
-    <h2>新規登録</h2>
-    {% if form.errors %}
-      <div style="color: red;">
-          <p>入力に誤りがあります:</p>
-          <ul>
-          {% for field in form %}
-              {% for error in field.errors %}
-                  <li>{{ field.label }}: {{ error }}</li>
-              {% endfor %}
-          {% endfor %}
-          {% for error in form.non_field_errors %}
-              <li>{{ error }}</li>
-          {% endfor %}
-          </ul>
-      </div>
-    {% endif %}
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">登録する</button>
-    </form>
+    <header>
+        <!-- 画像のパスも static タグで -->
+        <img class="registration_logo" src="{% static 'img/logo.png' %}" alt="ロゴ">
+    </header>
+    <main class="registration_main">
+        <h1>新規登録</h1>
+        <div class="registration_form">
+            {# フォームエラーがあれば表示 #}
+            {% if form.errors %}
+            <div style="color: red;">
+                <p>入力に誤りがあります:</p>
+                <ul>
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li>{{ field.label }}: {{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                <ul>
+                    <li>
+                        <h2>ユーザー名<span class="come">*</span></h2>
+                        {{ form.username }}
+                    </li>
+                    <li>
+                        <h2>お名前<span class="come">*</span></h2>
+                        {{ form.name }}
+                    </li>
+                    <li>
+                        <h2>お名前(フリガナ)<span class="come">*</span></h2>
+                        {{ form.furigana }}
+                    </li>
+                    <li>
+                        <h2>年齢<span class="come">*</span></h2>
+                        {{ form.age }}
+                    </li>
+                    <li class="registration_form_gender">
+                        <h2>性別<span class="come">*</span></h2>
+                        {{ form.gender }}
+                    </li>
+                    <li>
+                        <h2>メールアドレス<span class="come">*</span></h2>
+                        {{ form.email }}
+                    </li>
+                    <li>
+                        <h2>パスワード<span class="come">*</span></h2>
+                        {{ form.password1 }}
+                    </li>
+                    <li>
+                        <h2>パスワード(確認用)<span class="come">*</span></h2>
+                        {{ form.password2 }}
+                    </li>
+                </ul>
+                <button class="registration_form_button" type="submit">登録</button>
+            </form>
+        </div>
+    </main>
 </body>
 </html>
