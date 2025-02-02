@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="{% static 'css/24reset.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>新規登録</title>
+    {# ※ 重複している {% load static %} は削除済み #}
 </head>
 <body>
     <header>
         <!-- 画像のパスも static タグで -->
-        <img class="registration_logo" src="{% static 'img/logo.png' %}" alt="ロゴ">
+        <img class="registration_logo" src="{% static 'images/logo.png' %}" alt="ロゴ">
     </header>
     <main class="registration_main">
         <h1>新規登録</h1>
@@ -54,6 +55,7 @@
                     </li>
                     <li class="registration_form_gender">
                         <h2>性別<span class="come">*</span></h2>
+                        {# 性別フィールドのウィジェット（ラジオボタンなど）が表示されます #}
                         {{ form.gender }}
                     </li>
                     <li>
