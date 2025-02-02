@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style/24reset.css">
+    <link rel="stylesheet" href="../../style/style.css">
+    <title>新規登録</title>
+</head>
+<body>
+    <header>
+        <img class="registration_logo" src="../../img/logo.png" alt="ロゴ">
+    </header>
+    <main class="registration_main">
+        <h1>新規登録</h1>
+        <div class="registration_form">
+            <ul>
+                <li>
+                    <h2>お名前<span class="come">*</span></h2>
+                    <input type="text" placeholder="山田太郎">
+                </li>
+                <li>
+                    <h2>お名前(フリガナ)<span class="come">*</span></h2>
+                    <input type="text" placeholder="ヤマダタロウ">
+                </li>
+                <li>
+                    <h2>生年月日<span class="come">*</span></h2>
+                    <div class="registration_form_birthday">
+                        <p><input type="date">年</p>
+                        <p><input type="date">月</p>
+                        <p><input type="date">日</p>
+                    </div>
+                </li>
+                <li class="registration_form_gender">
+                    <h2>性別<span class="come">*</span></h2>
+                    <div class="registration_form_gender_radio">
+                        <p><input type="radio" name="gender" value="男性">男性</p>
+                        <p><input type="radio" name="gender" value="女性">女性</p>
+                        <p><input type="radio" name="gender" value="回答">回答しない</p>
+                    </div>
+                </li>
+                <li>
+                    <h2>メールアドレス<span class="come">*</span></h2>
+                    <input type="text" placeholder="example@gmail.com">
+                </li>
+                <li>
+                    <h2>パスワード<span class="come">*</span></h2>
+                    <input type="text" placeholder="password1234">
+                </li>
+                <li>
+                    <h2>パスワード(確認用)<span class="come">*</span></h2>
+                    <input type="text" placeholder="password1234">
+                </li>
+            </ul>
+            <button class="registration_form_button">登録</button>
+        </div>
+    </main>
+</body>
+</html>
