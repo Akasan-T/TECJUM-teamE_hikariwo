@@ -273,6 +273,16 @@ transform: rotate(90deg);
     background: currentColor;
     border-radius: 0.1em;
 }
+
+select {
+    border: 2px solid rgb(90, 194, 220); 
+    padding: 5px; 
+    font-size: 16px; 
+    background-color: #fff; 
+    color: #333; 
+    opacity: 0.5;
+}
+
 /* -------------GENRE-------------- */
 /* ------------------------------ */
 /* -------------LOGIN-------------- */
