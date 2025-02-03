@@ -1,35 +1,35 @@
 # accounts/forms.py
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .models import CustomUser
+from django.contrib.auth import get_user_model, authenticate
 
+User = get_user_model()
+
+# カスタムユーザー作成フォーム
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
-        model = CustomUser
-        # 登録画面に表示するフィールド（password1, password2 は UserCreationForm に含まれる）
-        fields = ('username', 'email', 'name', 'furigana', 'gender', 'age')
-# accounts/forms.py（同ファイル内に追加）
-from django.contrib.auth import authenticate, get_user_model
+        model = User
+        # モデルに合わせて必要なフィールドを指定してください
+        fields = ('username', 'email', 'name', 'furigana', 'age', 'gender')
 
+# カスタム認証フォーム（ユーザー名またはメールアドレスで認証）
 class CustomAuthenticationForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # ラベルを「ユーザー名またはメールアドレス」に変更
+        # ラベルを変更しておくなどのカスタマイズ
         self.fields['username'].label = "ユーザー名またはメールアドレス"
 
     def clean(self):
         username = self.cleaned_data.get('username')
         password = self.cleaned_data.get('password')
         if username and password:
-            UserModel = get_user_model()
-            # 入力値に「@」が含まれていればメールアドレスとしてユーザーを検索
+            # 入力に '@' が含まれているならメールアドレスとしてユーザーを検索
             if '@' in username:
                 try:
-                    user_obj = UserModel.objects.get(email=username)
+                    user_obj = User.objects.get(email=username)
                     username = user_obj.username
-                except UserModel.DoesNotExist:
-                    # 該当するユーザーがなければ、そのまま認証を進めると後でエラーになる
-                    pass
+                except User.DoesNotExist:
+                    pass  # 該当ユーザーがなければそのまま進む（後で認証エラーになる）
             self.user_cache = authenticate(self.request, username=username, password=password)
             if self.user_cache is None:
                 raise self.get_invalid_login_error()
