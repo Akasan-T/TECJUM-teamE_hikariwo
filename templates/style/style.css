@@ -11,9 +11,20 @@ main{
     width: 90%;
     margin: 0 auto;
 }
+header{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+}
 .header_img{
     width: 20%;
-    margin: 50px auto;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.mypage_img{
+    width: 4%;
 }
 .top{
     display: flex;
