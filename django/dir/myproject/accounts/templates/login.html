@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 静的ファイルのパス -->
     <link rel="stylesheet" href="{% static 'css/24reset.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>ログイン</title>
@@ -15,18 +14,18 @@
     </header>
     <main class="login_main">
         <h1 style="font-size: 30px;">ログイン</h1>
-        <!-- Django のログインビューを利用する場合、action 属性にはログイン URL を指定 -->
         <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
+            {{ form.non_field_errors }}
             <div class="login_form">
                 <ul class="login_form_ul">
                     <li>
-                        <h2>メールアドレス</h2>
-                        <input type="text" name="username" placeholder="example@gmail.com">
+                        <h2>ユーザー名またはメールアドレス</h2>
+                        {{ form.username }}
                     </li>
                     <li>
                         <h2>パスワード</h2>
-                        <input type="text" name="password" placeholder="********">
+                        {{ form.password }}
                     </li>
                 </ul>
             </div>

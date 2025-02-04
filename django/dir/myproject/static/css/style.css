@@ -14,7 +14,7 @@ main{
     margin: 0 auto;
 }
 header{
-    margin: 50px auto;
+    margin: 30px auto;
     display: flex;
     justify-content: space-between;
 }
@@ -187,7 +187,7 @@ header{
     border-radius: 20px;
     width: 18%;
     padding: 20px;
-    height: 65vh;
+    height: 60vh;
     position: fixed;
 }
 .left_bottom li{
@@ -238,6 +238,7 @@ header{
     background-color: #5ac2dc;
     width: 100%;
     display: inline-block;
+    margin-bottom: 30px;
     /* 仮置き */
 }
 .Deadline_list,
@@ -263,11 +264,10 @@ header{
     margin: 5px;
     background-color: #fff;
     border-radius: 20px;
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 10px;
+    padding: 20px;
 }
 #progress {
     width: 100%;
@@ -296,16 +296,233 @@ header{
 .main_center_top{
     display: flex;
     justify-content: space-between;
-    height: 50vh;
+    height: 45vh;
 }
 .main_center{
     width: 70%;
 }
 .main_center_top ul{
-    width: 60%;
+    width: 50%;
     padding: 20px;
+    gap: 5%;
 }
 .now_time{
     width: 40%;
+    height: 80%;
+    background-color: #fff;
+    margin: auto;
+}
+.Achievement_rate{
+    height: 40%;
+    padding: 30px 0;
+}
+.important{
+    height: 25%;
+    overflow: hidden;
+    white-space: normal;
+    word-wrap: break-word;
+}
+.add_task{
+    height: 20%;
+}
+.add_icon {
+    display: inline-block;
+    vertical-align: middle;
+    color: #333;
+    line-height: 1;
+    width: 1em;
+    height: 0.1em;
+    background: currentColor;
+    border-radius: 0.1em;
+    position: relative;
+  }
+  .add_icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: inherit;
+    transform: rotate(90deg);
+  }
+  .add_icon{
+    position: relative;
+    left: 90%;
+    transform: translateX(-90%);
+    top: -15px;
+  }
+  .main_bottom ul{
+    display: flex;
+    justify-content: space-between;
+  }
+  .main_bottom{
+    width: 100%;
+    height: 80vh;
+    background-color: rgba(203, 181, 169,0.2);
+    margin: 50px 0;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-around;
+  }
+  .main_bottom div{
+    width: 40%;
+    background-color: #fff;
+    border-radius: 20px;
+    margin: 30px 0;
+    overflow-y: scroll;
+  }
+  .main_bottom div h3{
+    text-align: center;
+    padding: 10px;
+  }
+  .main_bottom ul{
+    background-color: #5ac2dc;
+    border-radius: 20px;
+    opacity: 0.7;
+    height: 50px;
+    margin: 15px;
+  }
+  .main_bottom ul li{
+    margin: 10px auto;
+  }
+.completion ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/* .completion ul li{
+    background-color: #5ac2dc;
+    border-radius: 20px;
+    margin: 10px 0;
+} */
+.trash {
+    font-size: 100px;
+    position: relative;
+    width: 22px; /* 0.9emを18pxに変更 */
+    height: 24px; /* 1.2emを24pxに変更 */
+    border-left: 2px solid #000; /* 0.1emを2pxに変更 */
+    border-right: 2px solid #000; /* 0.1emを2pxに変更 */
+    border-bottom: 2px solid #000; /* 0.1emを2pxに変更 */
+    border-radius: 0 0 2px 2px; /* 0.1emを2pxに変更 */
+    background:
+        linear-gradient(to bottom, #000 0%, #000 100%) 4px 4px, /* 0.2emを4pxに変更 */
+        linear-gradient(to bottom, #000 0%, #000 100%) 8px 4px, /* 0.4emを8pxに変更 */
+        linear-gradient(to bottom, #000 0%, #000 100%) 12px 4px; /* 0.6emを12pxに変更 */
+    background-size: 2px 16px; /* 0.1emを2px、0.8emを16pxに変更 */
+    background-repeat: no-repeat;
+    left: 2px; /* 追加: 箱全体を右にずらす */
+}
+/* 蓋 */
+.trash::before {
+    content: "";
+    position: absolute;
+    top: -2px; /* -0.1emを-2pxに変更 */
+    left: -2.5px; /* -0.2emを-2pxに変更 */
+    width: 22px; /* 1.3emを22pxに変更 */
+    height: 2px; /* 0.1emを2pxに変更 */
+    background-color: #000;
+}
+/* 取っ手 */
+.trash::after {
+    content: "";
+    position: absolute;
+    top: -6px; /* -0.3emを-6pxに変更 */
+    left: 4px; /* 0.1emを4pxに変更 */
+    width: 10px; /* 0.5emを10pxに変更 */
+    height: 4px; /* 0.2emを4pxに変更 */
+    border-top: 2px solid #000; /* 0.1emを2pxに変更 */
+    border-left: 2px solid #000; /* 0.1emを2pxに変更 */
+    border-right: 2px solid #000; /* 0.1emを2pxに変更 */
+    border-radius: 2px 2px 0 0; /* 0.1emを2pxに変更 */
+}
+
+/* ---------Todo--------- */
+/* ------------------------ */
+/* ---------Detail--------- */
+
+.detail_box h1{
+    text-align: center;
+}
+.detail_box{
+    width: 35%;
+    margin: 10% auto;
+    height: 70vh;
+    background-color: #5ac2dc;
     padding: 20px;
+    border-radius: 20px;
+}
+.detail_box_top{
+    display: flex;
+    justify-content: space-around;
+}
+.detail_box_checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    border: 2px solid #000;
+    position: relative;
+    cursor: pointer; /* カーソルをポインターに */
+    background-color: #fff;
+}
+
+.detail_box_checkbox:checked {
+    background-color: #fff;
+}
+
+.detail_box_checkbox:checked::after {
+    content: '';
+    position: absolute;
+    top: 0px; /* チェックマークの位置を調整 */
+    left: 8px; /* チェックマークの位置を調整 */
+    width: 10px; /* チェックマークの幅 */
+    height: 20px; /* チェックマークの高さ */
+    border: solid #000;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+.detail_box_input{
+    width: 80%;
+    height: 40vh;
+}
+.detail_box_input_box{
+    text-align: center;
+    margin: 5%;
+}
+.detail_box_input {
+    width: 80%;
+    height: 40vh;
+    appearance: none;
+    -webkit-appearance: none;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 10px; /* 内側の余白を設定 */
+}
+.detail_box_button{
+    display: flex;
+    justify-content: space-around;
+}
+.detail_box_button li{
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 10px;
+    width: 20%;
+    text-align: center;
+}
+.main{
+    position: relative;
+}
+.click_detail{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    width: 100%;
+    height: 100%;
 }

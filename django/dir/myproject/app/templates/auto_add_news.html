@@ -1,0 +1,21 @@
+<!-- templates/auto_add_news.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ニュース記事自動取得</title>
+</head>
+<body>
+    <h1>外部記事の情報を取得</h1>
+    
+    {% if error_message %}
+    <p style="color:red;">{{ error_message }}</p>
+    {% endif %}
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">取得する</button>
+    </form>
+</body>
+</html>

@@ -1,23 +1,27 @@
-$(document).ready(function () {å
+$(document).ready(function () {
     $('.tab_item').click(function(){
         $('.tab_item').removeClass('active');
         $(this).addClass('active');
     });
+    // $('.Incomplete ul').click(function(){
+    //     if($('.Incomplete ul').click){
+    //         $('.click_detail').show();
+    //     }else{
+    //         $('body').click(function(){
+    //             $('.click_detail').hide();
+    //         });
+    //     }
+        
+    // });
 
-    $('.fitness_list').click(function(){
-        $('.fitness_after').show();
-        $('.fitness_list').hide();
-    });
-    $('.genre_active').click(function(){
-        $('.fitness_after').hide();
-        $('.fitness_list').show();
-    });
-    $('.nutrition_list').click(function(){
-        $('.nutrition_after').show();
-        $('.nutrition_list').hide();
-    });
-    $('.genre_active').click(function(){
-        $('.nutrition_after').hide();
-        $('.nutrition_list').show();
+    $(document).ready(function(){
+        $('.Incomplete ul').click(function(event){
+            event.stopPropagation(); // クリックイベントが body に伝播するのを防ぐ
+            $('.click_detail').show();
+        });
+    
+        $('body').click(function(){
+            $('.click_detail').hide();
+        });
     });
 });

@@ -1,0 +1,17 @@
+<!-- templates/news_form.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>記事{{ action }}</title>
+</head>
+<body>
+    <h1>記事{{ action }}</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">{{ action }}</button>
+    </form>
+    <p><a href="{% url 'news_list' %}">戻る</a></p>
+</body>
+</html>

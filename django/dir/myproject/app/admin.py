@@ -1,10 +1,20 @@
-# admin.py
+# app/admin.py
 from django.contrib import admin
-from .models import Tab
+from app.models import  ScrapingTarget, NewsArticle
+
 
 class TabAdmin(admin.ModelAdmin):
-    list_display = ('name', 'is_displayed')
-    list_editable = ('is_displayed',)
-    # ※必要に応じて検索やフィルタリング機能も追加可能
+    list_display = ('name', 'url', 'is_displayed')
+    list_filter = ('is_displayed',)
+    search_fields = ('name', 'url')
 
-admin.site.register(Tab, TabAdmin)
+@admin.register(ScrapingTarget)
+class ScrapingTargetAdmin(admin.ModelAdmin):
+    list_display = ('site_name', 'url', 'selector')
+    search_fields = ('site_name', 'url')
+
+@admin.register(NewsArticle)
+class NewsArticleAdmin(admin.ModelAdmin):
+    list_display = ('title', 'category', 'created_at')
+    list_filter = ('category', 'created_at')
+    search_fields = ('title', 'content')

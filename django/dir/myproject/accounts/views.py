@@ -13,8 +13,9 @@ def register(request):
     return render(request, 'register.html', {'form': form})
 
 
-# accounts/views.py（同ファイル内に追加）
+
 from django.contrib.auth.views import LoginView
+from .forms import CustomAuthenticationForm
 
 class CustomLoginView(LoginView):
     authentication_form = CustomAuthenticationForm

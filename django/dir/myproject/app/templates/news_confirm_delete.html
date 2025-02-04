@@ -1,0 +1,17 @@
+<!-- templates/news_confirm_delete.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>記事削除確認</title>
+</head>
+<body>
+    <h1>記事削除確認</h1>
+    <p>本当に「{{ article.title }}」を削除してもよろしいですか？</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">削除する</button>
+        <a href="{% url 'news_list' %}">キャンセル</a>
+    </form>
+</body>
+</html>

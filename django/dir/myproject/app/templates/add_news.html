@@ -1,0 +1,16 @@
+<!-- templates/add_news.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ニュース追加</title>
+</head>
+<body>
+    <h1>ニュース記事の追加</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">追加</button>
+    </form>
+</body>
+</html>
