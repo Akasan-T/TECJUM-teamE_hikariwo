@@ -1,0 +1,15 @@
+<h1>ToDo List</h1>
+<a href="{% url 'task_create' %}">新しいタスクを追加</a>
+<ul>
+    {% for task in tasks %}
+        <li>
+            {{ task.title }} ({{ task.get_priority_display }}) - 
+            {% if task.due_date %}
+                期日: {{ task.due_date|date:"Y/m/d" }} - 
+            {% endif %}
+            <a href="{% url 'task_complete' task.pk %}">タスク完了</a> - 
+            <a href="{% url 'task_edit' task.pk %}">編集</a> - 
+            <a href="{% url 'task_delete' task.pk %}">削除</a>
+        </li>
+    {% endfor %}
+</ul>
