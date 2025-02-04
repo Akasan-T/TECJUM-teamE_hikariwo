@@ -14,7 +14,7 @@
         <img class="registration_logo" src="{% static 'images/logo.png' %}" alt="ロゴ">
     </header>
     <main class="login_main">
-        <h1>ログイン</h1>
+        <h1 style="font-size: 30px;">ログイン</h1>
         <!-- Django のログインビューを利用する場合、action 属性にはログイン URL を指定 -->
         <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
@@ -26,7 +26,7 @@
                     </li>
                     <li>
                         <h2>パスワード</h2>
-                        <input type="password" name="password" placeholder="********">
+                        <input type="text" name="password" placeholder="********">
                     </li>
                 </ul>
             </div>

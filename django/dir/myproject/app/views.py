@@ -20,3 +20,4 @@ def add_tab(request):
     else:
         form = TabForm()
     return render(request, 'myapp/add_tab.html', {'form': form})
+
