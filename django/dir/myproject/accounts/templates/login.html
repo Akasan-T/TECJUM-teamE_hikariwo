@@ -1,19 +1,37 @@
-<!-- accounts/templates/accounts/login.html -->
-{% extends "base.html" %}
-
-{% block content %}
-<h2>ログイン</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.non_field_errors }}
-    <div>
-        {{ form.username.label_tag }}<br>
-        {{ form.username }}
-    </div>
-    <div>
-        {{ form.password.label_tag }}<br>
-        {{ form.password }}
-    </div>
-    <button type="submit">ログイン</button>
-</form>
-{% endblock %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 静的ファイルのパス -->
+    <link rel="stylesheet" href="{% static 'css/24reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>ログイン</title>
+</head>
+<body>
+    <header>
+        <img class="registration_logo" src="{% static 'images/logo.png' %}" alt="ロゴ">
+    </header>
+    <main class="login_main">
+        <h1>ログイン</h1>
+        <!-- Django のログインビューを利用する場合、action 属性にはログイン URL を指定 -->
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="login_form">
+                <ul class="login_form_ul">
+                    <li>
+                        <h2>メールアドレス</h2>
+                        <input type="text" name="username" placeholder="example@gmail.com">
+                    </li>
+                    <li>
+                        <h2>パスワード</h2>
+                        <input type="password" name="password" placeholder="********">
+                    </li>
+                </ul>
+            </div>
+            <button class="login_button" type="submit">ログイン</button>
+        </form>
+    </main>    
+</body>
+</html>
