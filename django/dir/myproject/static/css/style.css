@@ -1,198 +1,95 @@
-p{
-    font-size: 13px;
-}
 h1{
-    font-size: 18px;
-    text-align: center;
+    font-size: 40px;
 }
 h2{
-    font-size: 15px;
+    font-size: 36px;
 }
-/* body{
-    height: 1200px;
-} */
-.header_top,
-.header_top_right{
-    display: flex;
-}
-.header_top{
-    width: 80%;
-    margin: 60px auto 30px;
-}
-.header_top_right{
-    gap: 25px;
-    width: 100%;
-    justify-content: flex-end;
-}
-.header_bottom{
-    margin: 0 auto;
-}
-.header_bottom_list a{
-    text-decoration: none;
-}
-.header_bottom_list{
-    display: flex;
-    margin: 0 auto;
-    text-align: center;
-    justify-content: center;
-}
-.header_bottom_list li{
-    padding: 0 12px;
-    border-radius: 10px 10px 0 0;
-    background-color: #5AC2DC;
-    opacity: 0.3;
-    height: 35px;
-}
-.item01{
-    background-color: blue;
-}
-.border_line{
-    border-bottom: 5px solid #5AC2DC;
-    opacity: 0.3;
-    width: 100%;
+p{
+    font-size: 20px;
 }
 
-.header_bottom_list li.active{
-    transform: scale(1.1);
-    background-color: #5AC2DC;
-    opacity: 0.5;
-}
-.border_line.active{
-    opacity: 0.5;
-    border-bottom-color: #5AC2DC;
-}
-.border_bottom_list li p{
-    color: #5E5E85;
-}
-.border_bottom_list li.active p{
-    color: #fff;
-}
+header,
 main{
-    margin-bottom: 80px;
-}
-.main_line{
-    width: 90%;
-    height: 1px;
-    margin: 10px auto;
-    background-color: #5E5E85;
-}
-.main_box{
     width: 90%;
     margin: 0 auto;
 }
-.main_box ul{
+header{
+    margin: 50px auto;
     display: flex;
+    justify-content: space-between;
 }
-.main_box ul h2{
-    width: 90%;
-    height: 100px;
-}
-.main_box ul img{
-    object-fit: cover;
-}
-.footer_list{
-    display: flex;
-    justify-content: space-around;
-    bottom: 0;
-    width: 90%;
-    left: 5%;
-    position: fixed;
-}
-.footer_list img{
-    width: 100%;
+.header_img{
+    width: 20%;
     position: relative;
-    top: 10px;
-}
-footer{
-    height: 60px;
-    background-color: #F2F2F2;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    border-top: 2px solid #5E5E85;
-}
-.footer_line{
-    width: 2px;
-    height: 60px;
-    background-color: #5E5E85;
-}
-/* -------------TOP---------------- */
-/* ------------------------------ */
-/* -------------REGISTRATION-------- */
-
-.registration_logo{
-    margin: 60px auto 40px;
-    width: 30%;
-}
-.registration_main{
-    width: 90%;
-    max-width: 270px;
-    margin: 0 auto;
-    box-sizing: border-box;
-}
-.registration_form ul li{
-    padding: 10px 0;
-}
-.registration_form input{
-    width: 100%;
-    margin: 0 auto;
-    box-sizing: border-box;
-    border: 2px solid #5AC2DC;
-    opacity: 0.5;
-}
-.registration_form_birthday{
-    max-width: 270px;
-}
-.registration_form_birthday p{
-    display: flex;
-    align-items: center;
-    width: 27%;
-    box-sizing: border-box;
-    margin-right: 10px;
-}
-.registration_form_gender_radio,
-.registration_form_birthday{
-    display: flex;
-    gap: 10px;
-}
-.registration_form_gender input{
-    width: 15px;
-}
-.registration_form_gender p{
-    font-size: 16px;
-}
-.registration_form input[type="date"],
-.registration_form input[type="text"]{
-    height: 34px;
-    width: 100%;
-    box-sizing: border-box;
-}
-.come{
-    color: red;
-}
-.registration_form_button{
-    width: 30%;
-    height: 34px;
-    background-color: #5AC2DC;
-    opacity: 0.7;
-    border-radius: 10px;
-    text-align: center;
     left: 50%;
-    position: relative;
     transform: translateX(-50%);
-    margin: 30px 0;
-    color: #fff
 }
-/* -------------REGISTRATION-------- */
-/* ------------------------------ */
-/* -------------GENRE-------------- */
-
-.genre_title{
-    width: 50%;
-    margin: 30px auto;
+.mypage_img{
+    width: 5%;
+}
+.top{
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-between;
+    margin: 40px 0;
+}
+.top h2{
     text-align: center;
 }
-.plus_icon {
+.top_news,
+.top_todo{
+    width: 45%;
+    padding: 20px;
+}
+.top_news_list ul li{
+    display: flex;
+    height: 170px;
+}
+.top_news_list ul li p{
+    width: 50%;
+    overflow: hidden;
+    margin: 10px;
+}
+.top_news_list ul li,
+.top_todo_list ul li{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+.top_news,
+.top_todo{
+    background-color: #5ac2dc;
+    border-radius: 20px;
+    opacity: 0.7;
+}
+.top_news_list ul{
+    background-color: #fff;
+    margin: 20px 0;
+    border-radius: 20px;
+}
+.top_todo_list ul{
+    margin: 20px 0;
+    border-radius: 20px;
+}
+.top_news_list img{
+    padding: 10px;
+}
+.circle{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #000;
+}
+.top_todo_list ul li{
+    height: 100px;
+    align-items: center;
+    border-radius: 20px;
+    background-color: #fff;
+}
+.top_todo_list ul li{
+    margin: 20px 0;
+}
+.plus {
     display: inline-block;
     vertical-align: middle;
     color: #333;
@@ -202,104 +99,213 @@ footer{
     background: currentColor;
     border-radius: 0.1em;
     position: relative;
-  }
-
-.plus_icon::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: inherit;
-border-radius: inherit;
-transform: rotate(90deg);
 }
-.before_click{
-    width: 90%;
-    max-width: 270px;
-    margin: 0 auto;
-    display: flex;
-}
-.before_click ul{
-    display: flex;
-    justify-content: space-around;
+  
+.plus::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-width: 270px;
-    box-shadow: 0 4px 5px 0 #000;
-    border-radius: 10px;
+    height: 100%;
+    background: inherit;
+    border-radius: inherit;
+    transform: rotate(90deg);
+  }
+.all_news{
+    margin: 40px 0 0 0;
 }
-.before_click ul li{
-    height: 28px;
+.tab {
+    display: flex;
+    justify-content: center;
+}
+.tab li{
+    width: 15%;
+    background-color: #5ac2dc;
+    opacity: 0.7;
+    border-radius: 20px 20px 0 0;
+    text-align: center;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tab li a{
+    text-decoration: none;
+}
+.tab_bar{
+    width: 100%;
+    height: 10px;
+    border-radius: 20px 20px 0 0;
+    background-color: #5ac2dc;
+    opacity: 0.7;
+}
+.all_news_list{
+    background-color: #5ac2dc;
+    opacity: 0.7;
+    border-radius: 0 0 20px 20px;
+    margin-bottom: 50px;
+}
+.all_news_list ul{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+.all_news_list ul li{
+    width: 80%;
+    height: 300px;
+    border-radius: 20px 20px 0 0;
+    padding: 10px;
+    justify-content: space-between;
+    margin: 0 auto;
+    border-radius: 20px;
+    margin: 20px;
+    background-color: #fff;
+}
+.all_news_list ul li p{
+    overflow: hidden;
+    white-space: normal;
+    word-wrap: break-word;
+    height: 20%;
+    margin: 10px;
+    text-align: center;
 }
 .active{
-    width: 90%;
-    max-width: 270px;
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    color: #000;
-    align-items: center;
-    margin: 0 auto;
-}
-.after_click ul li{
-    width: 90%;
-    text-align: start;
-    margin: 0 auto;
-    max-width: 270px;
-    padding: 10px 0;
-}
-.after_click ul{
-    box-shadow: 0 4px 5px 0 #000;
-    border-radius: 10px;
-    max-width: 270px;
-    margin: 0 auto;
-}
-.after_click{
     display: none;
+    background-color: #5ac2dc;
+    opacity: 1;
+    color: #fff;
+    transform: scale(1.1);
 }
-.minus_icon {
+
+/* -------------TOP------------- */
+/* ----------------------------- */
+/* -------------TODO------------- */
+
+.left_bottom{
+    background-color: #5ac2dc;
+    opacity: 0.7;
+    border-radius: 20px;
+    width: 18%;
+    padding: 20px;
+    height: 65vh;
+    position: fixed;
+}
+.left_bottom li{
+    text-align: center;
+}
+.arrow {
     display: inline-block;
     vertical-align: middle;
-    color: #333;
+    color: #000;
     line-height: 1;
-    width: 20px;
-    height: 4px;
+    position: relative;
+    width: 15px;
+    height: 15px;
+    transform: translateX(-25%) rotate(45deg);
+  }
+  
+  .arrow::before, .arrow::after {
+    content: '';
+    position: absolute;
     background: currentColor;
     border-radius: 0.1em;
-}
-/* -------------GENRE-------------- */
-/* ------------------------------ */
-/* -------------LOGIN-------------- */
-
-.login_main{
-    text-align: center;
-    margin: 0 auto;
-    margin-top: 100px;
-    max-width: 270px;
-    flex-direction: column;
-    justify-content: center;
+  }
+  
+  .arrow::before {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 0.1em;
+  }
+  
+  .arrow::after {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 0.1em;
+  }
+  .Deadline_title,
+  .Tab_title,
+  .left_Priority h3{
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #000;
 }
-.login_main h1,
-.login_button{
-    margin: 50px 0;
-}
-.login_form_ul input[type="text"]{
+.top_time{
+    height: 200px;
+    background-color: #5ac2dc;
     width: 100%;
-    box-sizing: border-box;
-    border: 2px solid #5AC2DC;
-    opacity: 0.5;
-    max-width: 270px;
+    display: inline-block;
+    /* 仮置き */
 }
-.login_form_ul li{
-    padding: 10px 0;
-    text-align: start;
+.Deadline_list,
+.Tab_list{
+    display: none;
 }
-.login_button{
+.left_top{
+    width: 20%;
+}
+.main_center{
+    background-color: rgba(203, 181, 169,0.2);
+    border-radius: 20px;
+}
+.main_center_top ul{
+    /* background-color: #fff; */
+    border-radius: 20px;
+    margin: auto 0;
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+}
+.main_center_top ul li{
+    margin: 5px;
+    background-color: #fff;
+    border-radius: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+}
+#progress {
+    width: 100%;
+    appearance: none; /* デフォルトのスタイルをリセット */
+    background-color: rgba(90, 194, 220, 0.3);
+    border-radius: 20px;
+}
+
+#progress::-webkit-progress-bar {
+    background-color: transparent; /* 背景色を透明に */
+}
+
+#progress::-webkit-progress-value {
+    background-color: initial; /* プログレスバーの色を初期化 */
+}
+
+#progress::-moz-progress-bar {
+    background-color: initial; /* Firefox用のプログレスバーの色を初期化 */
+}
+#progress::-webkit-progress-value {
+    background-color: #5ac2dc; /* プログレスバーの進捗部分の色 */
+    border-radius: 20px;
+}
+
+.main,
+.main_center_top{
+    display: flex;
+    justify-content: space-between;
+    height: 50vh;
+}
+.main_center{
+    width: 70%;
+}
+.main_center_top ul{
+    width: 60%;
+    padding: 20px;
+}
+.now_time{
     width: 40%;
-    height: 34px;
-    background-color: #5AC2DC;
-    opacity: 0.7;
-    border-radius: 10px;
+    padding: 20px;
 }

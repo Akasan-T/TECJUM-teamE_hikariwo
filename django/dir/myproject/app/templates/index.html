@@ -1,85 +1,194 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../style/24reset.css">
-    <link rel="stylesheet" href="../../style/style.css">
-    <script src="../../style/script.js"></script>
+    <link rel="stylesheet" href="{% static 'css/24reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" href="{% static 'js/script.js' %}"></script>
     <title>TOP</title>
 </head>
 <body>
     <header>
-        <div class="header_top">
-            <img src="../../img/logo.png" alt="ロゴ">
-            <ul class="header_top_right">
-                <li><img src="../../img/カレンダー/date.png" alt="カレンダー"></li>
-                <li><img src="../../img/カレンダー/Sunny.png" alt="天気"></li>
-            </ul>
-        </div>
-        <nav class="header_bottom">
-            <ul class="header_bottom_list">
-                <li><p><a href="#">マナー</a></p></li>
-                <li><p><a href="#">健康</a></p></li>
-                <li><p><a href="#">筋トレ</a></p></li>
-                <li><p><a href="#">モテ活</a></p></li>
-                <li><p><a href="#">ダイエット</a></p></li>
-            </ul>
-            <p class="border_line" id="border_line"></p>
-        </nav>
+        <img class="header_img" src="{% static 'images/logo.png' %}" alt="ロゴ">
+        <img class="mypage_img" src="{% static 'images/mypage.png' %}" alt="マイページ">
     </header>
     <main>
-        <p class="main_line"></p>
-        <div class="main_box">
-            <ul>
-                <li><h2>サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキスト</h2></li>
-                <li><img src="../../img/sample.jpeg" alt="ニュース画像"></li>
-            </ul>
+        <div class="top">
+            <div class="top_news">
+                <h2>新着</h2>
+                <div class="top_news_list">
+                    <ul>
+                        <li>
+                            <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+                            <img src="{% static 'images/sample.jpeg' %}" alt="ニュース画像">
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+                            <img src="{% static 'images/sample.jpeg' %}" alt="ニュース画像">                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                        <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+                            <img src="{% static 'images/sample.jpeg' %}" alt="ニュース画像" class="top_news_img">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="top_todo">
+                <h2>ToDo</h2>
+                <div class="top_todo_list">
+                    <ul>
+                        <li>
+                            <p>タスクテキストタスクテキスト</p>
+                            <p class="circle"></p>
+                        </li>
+                        <li>
+                            <p>タスクテキストタスクテキスト</p>
+                            <p class="circle"></p>
+                        </li>
+                        <li>
+                            <p>タスクテキストタスクテキスト</p>
+                            <p class="circle"></p>
+                        </li>
+                        <li>
+                            <p>タスクテキストタスクテキスト</p>
+                            <p class="circle"></p>
+                        </li>
+                        <li>
+                            <p>全てのタスクを表示</p>
+                            <p class="plus"></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <p class="main_line"></p>
-        <div class="main_box">
-            <ul>
-                <li><h2>サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキスト</h2></li>
-                <li><img src="../../img/sample.jpeg" alt="ニュース画像"></li>
+        <div class="all_news">
+            <ul class="tab">
+                <li class="tab_item active"><a href="#">ジャンル01</a></li>
+                <li class="tab_item"><a href="#">ジャンル02</a></li>
+                <li class="tab_item"><a href="#">ジャンル03</a></li>
+                <li class="tab_item"><a href="#">ジャンル04</a></li>
+                <li class="tab_item"><a href="#">ジャンル05</a></li>
             </ul>
+            <p class="tab_bar"></p>
         </div>
-        <p class="main_line"></p>
-        <div class="main_box">
+        <div class="all_news_list">
             <ul>
-                <li><h2>サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキスト</h2></li>
-                <li><img src="../../img/sample.jpeg" alt="ニュース画像"></li>
-            </ul>
-        </div>
-        <p class="main_line"></p>
-        <div class="main_box">
-            <ul>
-                <li><h2>サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキスト</h2></li>
-                <li><img src="../../img/sample.jpeg" alt="ニュース画像"></li>
-            </ul>
-        </div>
-        <p class="main_line"></p>
-        <div class="main_box">
-            <ul>
-                <li><h2>サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキスト</h2></li>
-                <li><img src="../../img/sample.jpeg" alt="ニュース画像"></li>
-            </ul>
-        </div>
-        <p class="main_line"></p>
-        <div class="main_box">
-            <ul>
-                <li><h2>サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキスト</h2></li>
-                <li><img src="../../img/sample.jpeg" alt="ニュース画像"></li>
+                <li>
+                    <img src="{% static 'images/sample.jpeg' %}" alt="ニュース画像"> 
+                    <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+                </li>
+                <li>
+                    <img src="{% static 'images/sample.jpeg' %}" alt="ニュース画像"> 
+                    <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+                </li>
+                <li>
+                    <img src="../../img/sample.jpeg" alt="ニュース画像">
+                    <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+                </li>
+                <li>
+                    <img src="../../img/sample.jpeg" alt="ニュース画像">
+                    <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+                </li>
+                <li>
+                    <img src="../../img/sample.jpeg" alt="ニュース画像">
+                    <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+                </li>
+                <li>
+                    <img src="../../img/sample.jpeg" alt="ニュース画像">
+                    <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+                </li>
+                <li>
+                    <img src="../../img/sample.jpeg" alt="ニュース画像">
+                    <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+                </li>
+                <li>
+                    <img src="../../img/sample.jpeg" alt="ニュース画像">
+                    <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+                </li>
+                <li>
+                    <img src="../../img/sample.jpeg" alt="ニュース画像">
+                    <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+                </li>
+                <li>
+                    <img src="../../img/sample.jpeg" alt="ニュース画像">
+                    <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+                </li>
+                <li>
+                    <img src="../../img/sample.jpeg" alt="ニュース画像">
+                    <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+                </li>
+                <li>
+                    <img src="../../img/sample.jpeg" alt="ニュース画像">
+                    <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+                </li>
+                <li>
+                    <img src="../../img/sample.jpeg" alt="ニュース画像">
+                    <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+                </li>
+                <li>
+                    <img src="../../img/sample.jpeg" alt="ニュース画像">
+                    <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+                </li>
+                <li>
+                    <img src="../../img/sample.jpeg" alt="ニュース画像">
+                    <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+                </li>
+                <li>
+                    <img src="../../img/sample.jpeg" alt="ニュース画像">
+                    <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+                </li>
+                <li>
+                    <img src="../../img/sample.jpeg" alt="ニュース画像">
+                    <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+                </li>
+                <li>
+                    <img src="../../img/sample.jpeg" alt="ニュース画像">
+                    <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+                </li>
+                <li>
+                    <img src="../../img/sample.jpeg" alt="ニュース画像">
+                    <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+                </li>
+                <li>
+                    <img src="../../img/sample.jpeg" alt="ニュース画像">
+                    <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+                </li>
             </ul>
         </div>
     </main>
-    <footer>
-        <ul class="footer_list">
-            <li><img src="../../img/home.png" alt="ホーム"></li>
-            <li><p class="footer_line"></p></li>
-            <li><img src="../../img/ToDo.png" alt="ToDo"></li>
-            <li><p class="footer_line"></p></li>
-            <li><img src="../../img/setting.png" alt="設定"></li>
-        </ul>
-    </footer>
+
+    <script>
+        $(document).ready(function () {
+            $('.tab_item').click(function(){
+    $('.tab_item').removeClass('active'); // すべてのタブから 'active' を削除
+    $(this).addClass('active'); // クリックしたタブに 'active' を追加
+});
+
+            $('.fitness_list').click(function(){
+                $('.fitness_after').show();
+                $('.fitness_list').hide();
+            });
+            $('.genre_active').click(function(){
+                $('.fitness_after').hide();
+                $('.fitness_list').show();
+            });
+            $('.nutrition_list').click(function(){
+                $('.nutrition_after').show();
+                $('.nutrition_list').hide();
+            });
+            $('.genre_active').click(function(){
+                $('.nutrition_after').hide();
+                $('.nutrition_list').show();
+            });
+        });
+    </script>
 </body>
 </html>
+
+
