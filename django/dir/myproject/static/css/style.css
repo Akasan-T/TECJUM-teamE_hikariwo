@@ -65,7 +65,6 @@ h2{
 }
 .border_bottom_list li.active p{
     color: #fff;
-    
 }
 main{
     margin-bottom: 80px;
@@ -122,6 +121,7 @@ footer{
 
 .registration_logo{
     margin: 60px auto 40px;
+    width: 40%;
 }
 .registration_main{
     width: 90%;
@@ -154,14 +154,9 @@ footer{
     display: flex;
     gap: 10px;
 }
-/* 性別欄のラジオボタンのサイズを統一する例 */
-.registration_form_gender input[type="radio"] {
-    width: 20px;      /* 幅を20pxに指定（必要に応じて調整） */
-    height: 20px;     /* 高さを20pxに指定 */
-    margin-right: 5px;/* ラベルとの間隔を調整 */
-    vertical-align: middle; /* テキストとの縦位置を揃える */
+.registration_form_gender input{
+    width: 15px;
 }
-
 .registration_form_gender p{
     font-size: 16px;
 }
@@ -185,6 +180,7 @@ footer{
     position: relative;
     transform: translateX(-50%);
     margin: 30px 0;
+    color: #fff
 }
 /* -------------REGISTRATION-------- */
 /* ------------------------------ */
@@ -235,7 +231,7 @@ transform: rotate(90deg);
 .before_click ul li{
     height: 28px;
 }
-.genre_active{
+.active{
     width: 90%;
     max-width: 270px;
     display: flex;
