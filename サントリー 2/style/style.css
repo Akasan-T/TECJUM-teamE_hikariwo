@@ -121,6 +121,7 @@ footer{
 
 .registration_logo{
     margin: 60px auto 40px;
+    width: 40%;
 }
 .registration_main{
     width: 90%;
@@ -179,6 +180,7 @@ footer{
     position: relative;
     transform: translateX(-50%);
     margin: 30px 0;
+    color: #fff
 }
 /* -------------REGISTRATION-------- */
 /* ------------------------------ */
