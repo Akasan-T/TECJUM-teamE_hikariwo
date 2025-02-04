@@ -3,6 +3,7 @@ p{
 }
 h1{
     font-size: 18px;
+    text-align: center;
 }
 h2{
     font-size: 15px;
@@ -121,7 +122,7 @@ footer{
 
 .registration_logo{
     margin: 60px auto 40px;
-    width: 40%;
+    width: 30%;
 }
 .registration_main{
     width: 90%;
