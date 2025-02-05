@@ -7,8 +7,39 @@
     <link rel="stylesheet" href="{% static 'css/24reset.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <style>
+        /* 新着記事の内容を左右に並べる */
+    .article-content_top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+    }
+/* 左側のテキスト部分 */
+    .article-text_top {
+        flex: 1;
+        padding-right: 10px;
+    }
 
-        .no-articles-message { display: none; font-style: italic; color: #777; text-align: center; padding: 200px;}
+/* 右側の画像部分 */
+    .article-image_top {
+        flex: 0 0 auto;
+    }
+    .news-category ul {
+display: flex;
+flex-wrap: wrap;
+  gap: 10px;        /* 各記事間の余白 */
+  list-style: none; /* リストマーカーの削除 */
+padding: 0;
+margin: 0;
+}
+
+.news-category li.article {
+  flex: 0 0 280px;  /* 各記事の幅を指定（必要に応じて調整） */
+border: 1px solid #ddd;
+padding: 5px;
+box-sizing: border-box;
+}
+.no-articles-message { display: none; font-style: italic; color: #777; text-align: center; padding: 200px;}
     </style>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" href="{% static 'js/script.js' %}"></script>
@@ -26,12 +57,26 @@
                 <div class="top_news_list">
                     <ul>
                         {% for article in newest_articles %}
-                            <li class="article">
-                                <strong class="article-title">{{ article.title }}</strong>
-                                {% if article.image %}
-                                    <br><img src="{{ article.image.url }}" alt="{{ article.title }}">
-                                {% else %}
-                                <br><img src="{% static 'images/sample.jpeg' %}" alt="デフォルト画像" style="max-width:200px;">
+                            <li class="article" style="display: flex; justify-content: end; width: 100%;">
+                                {% if article.source_url %}
+                                <a class="article_link" href="{{ article.source_url }}" target="_blank" style="text-decoration: none; color: inherit;">
+                                {% endif %}
+                                    <div class="article-content_top">
+                                        <!-- 左側：テキスト -->
+                                        <div class="article-text_top">
+                                            <strong class="article-title">{{ article.title }}</strong>
+                                        </div>
+                                        <!-- 右側：画像 -->
+                                        <div class="article-image_top">
+                                            {% if article.image %}
+                                                <img src="{{ article.image.url }}" alt="{{ article.title }}" style="width: 200px;">
+                                            {% else %}
+                                                <img src="{% static 'images/sample.jpeg' %}" alt="デフォルト画像" style="max-width:200px;">
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% if article.source_url %}
+                                </a>
                                 {% endif %}
                             </li>
                         {% endfor %}
@@ -44,15 +89,15 @@
                     <ul>
                         {% for task in tasks|slice:":4" %}
                             <li>
-                                <!-- タスクのタイトルを表示 -->
                                 <p>{{ task.title }}</p>
-                                <!-- ここでは優先度に応じて CSS クラスを動的に追加する例 -->
                                 <p class="circle"></p>
                             </li>
                         {% empty %}
                             <li>タスクがありません。</li>
                         {% endfor %}
-                        <li><p><a href="{% url 'todo:task_list' %}">全てのタスクを表示</a></p></li>
+                        <li>
+                            <p><a href="{% url 'todo:task_list' %}" style="display: block;">全てのタスクを表示</a></p>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -88,19 +133,18 @@
             {% regroup articles by category as grouped_articles %}
             {% for group in grouped_articles %}
             <section class="news-category" data-category="{{ group.grouper }}">
-                <h2>カテゴリ: {{ group.grouper }}</h2>
                 <ul>
                     {% for article in group.list %}
                         <li class="article">
                             {% if article.source_url %}
                                 <a class="article_link" href="{{ article.source_url }}" target="_blank" style="text-decoration: none; color: inherit;">
                             {% endif %}
-                                    <strong class="article-title">{{ article.title }}</strong>
                                     {% if article.image %}
                                         <br><img src="{{ article.image.url }}" alt="{{ article.title }}" style="max-width:200px;">
                                     {% else %}
                                         <br><img src="{% static 'images/sample.jpeg' %}" alt="デフォルト画像" style="max-width:200px;">
                                     {% endif %}
+                                    <strong class="article-title">{{ article.title }}</strong>
                             {% if article.source_url %}
                                 </a>
                             {% endif %}
@@ -112,6 +156,7 @@
             <p>ニュース記事はまだありません。</p>
             {% endfor %}
         </div>
+        
     </main>
 
     <script>

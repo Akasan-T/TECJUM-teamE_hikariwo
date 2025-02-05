@@ -20,7 +20,7 @@ def index(request):
         form = TaskForm()
     
     # ニュース記事の一覧を作成日時の降順で取得
-    articles = NewsArticle.objects.all().order_by('-created_at')
+    articles = NewsArticle.objects.all().order_by('category', '-created_at')
     # 新着記事トップ3を抽出
     newest_articles = articles[:3]
     # NEWS_CATEGORY_CHOICES（固定のカテゴリ選択肢）の辞書を作成（キー→表示名）

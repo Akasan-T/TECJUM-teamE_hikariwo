@@ -1,15 +1,33 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../style/24reset.css">
-    <link rel="stylesheet" href="../../style/style.css">
+    <link rel="stylesheet" href="{% static 'css/24reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="../../style/script.js"></script>
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
     <title>ToDo</title>
 </head>
 <body>
+    <script>
+        $(document).ready(function(){
+            // タスク一覧内のタスク項目をクリックしたときの処理
+            $('.task-item').click(function(){
+                // data属性から各情報を取得
+                var title = $(this).data('title');
+                var dueDate = $(this).data('due-date');
+                var description = $(this).data('description');
+                var pk = $(this).data('pk');
+                
+                // 詳細表示部分の内容を更新
+                $('.detail_box h1').text(title);
+                $('.detail_box_top p').text(dueDate);
+                $('.detail_box_input').val(description);
+            });
+        });
+    </script>
     <h1>ToDo List</h1>
 <a href="{% url 'todo:task_create' %}">新しいタスクを追加</a>
 <ul>
@@ -26,7 +44,7 @@
     {% endfor %}
 </ul>
     <header>
-        <img class="header_img" src="../../img/logo.png" alt="ロゴ">
+        <img class="header_img" src="{% static 'images/logo.png' %}" alt="ロゴ">
     </header>
     <main class="main">
         <div class="left_top">
@@ -105,107 +123,38 @@
             <div class="main_bottom">
                 <div class="Incomplete">
                     <h3>未完了</h3>
-                    <ul>
-                        <li>タスクタイトル</li>
-                        <li>あと4日</li>
-                    </ul>
-                    <ul>
-                        <li>タスクタイトル</li>
-                        <li>あと4日</li>
-                    </ul>
-                    <ul>
-                        <li>タスクタイトル</li>
-                        <li>あと4日</li>
-                    </ul>
-                    <ul>
-                        <li>タスクタイトル</li>
-                        <li>あと4日</li>
-                    
-                    </ul>
-                    <ul>
-                        <li>タスクタイトル</li>
-                        <li>あと4日</li>
-                    </ul>
-                    <ul>
-                        <li>タスクタイトル</li>
-                        <li>あと4日</li>
-                    </ul>
-                    <ul>
-                        <li>タスクタイトル</li>
-                        <li>あと4日</li>
-                    </ul>
-                    </ul>
-                    <ul>
-                        <li>タスクタイトル</li>
-                        <li>あと4日</li>
-                    </ul>
-                    <ul>
-                        <li>タスクタイトル</li>
-                        <li>あと4日</li>
-                    </ul>
-                    <ul>
-                        <li>タスクタイトル</li>
-                        <li>あと4日</li>
-                    </ul>
-                    <ul>
-                        <li>タスクタイトル</li>
-                        <li>あと4日</li>
-                    </ul>
-                    <ul>
-                        <li>タスクタイトル</li>
-                        <li>あと4日</li>
-                    </ul>
+                    {% for task in tasks %}
+                        <!-- 各タスク項目に data- 属性で必要な情報を設定 -->
+                        <ul class="task-item" 
+                            pk="{{ task.pk }}"
+                            data-title="{{ task.title }}" 
+                            data-due-date="{% if task.due_date %}{{ task.due_date|date:'Y/m/d' }}{% else %}期限未定{% endif %}" 
+                            data-description="{{ task.description|default:'' }}">
+                            <li>{{ task.title }}</li>
+                            <li>
+                                {% if task.due_date %}
+                                    {{ task.due_date|date:"Y/m/d" }}
+                                {% else %}
+                                    期限未定
+                                {% endif %}
+                            </li>
+                        </ul>
+                    {% endfor %}
                 </div>
                 <div class="completion">
                     <h3>完了</h3>
-                    <ul>
-                        <li>タスクタイトル</li>
-                    </ul>
-                    <ul>
-                        <li>タスクタイトル</li>
-                    </ul>   
-                    <ul>
-                        <li>タスクタイトル</li>
-                    </ul>
-                    <ul>
-                        <li>タスクタイトル</li>
-                    </ul>
-                    <ul>
-                        <li>タスクタイトル</li>
-                    </ul>
-                    <ul>
-                        <li>タスクタイトル</li>
-                    </ul>
-                    <ul>
-                        <li>タスクタイトル</li>
-                    </ul>   
-                    <ul>
-                        <li>タスクタイトル</li>
-                    </ul>
-                    <ul>
-                        <li>タスクタイトル</li>
-                    </ul>
-                    <ul>
-                        <li>タスクタイトル</li>
-                    </ul>
-                    <ul>
-                        <li>タスクタイトル</li>
-                    </ul>
-                    <ul>
-                        <li>タスクタイトル</li>
-                    </ul>   
-                    <ul>
-                        <li>タスクタイトル</li>
-                    </ul>
-                    <ul>
-                        <li>タスクタイトル</li>
-                    </ul>
-                    <ul>
-                        <li>タスクタイトル</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+                    <section>
+                        <ul>
+                            {% for task in completed_tasks %}
+                                <li>
+                                    {{ task.title }}
+                                    <!-- 必要に応じて詳細情報や操作リンクなど -->
+                                </li>
+                            {% empty %}
+                                <li>完了したタスクはありません。</li>
+                            {% endfor %}
+                        </ul>
+                    </section>
     </main>
     <footer>
         <div class="detail click_detail">
@@ -219,8 +168,16 @@
                     <textarea class="detail_box_input"></textarea>
                 </div>
                 <ul class="detail_box_button">
-                    <li>削除</li>
-                    <li>編集</li>
+                    {% if task.pk %}
+                    <a href="{% url 'todo:task_edit' task.pk %}">編集</a>
+                {% else %}
+                    編集できません
+                {% endif %}
+                {% if task.pk %}
+                <a href="{% url 'todo:task_delete' task.pk %}">削除</a>
+            {% else %}
+                削除リンクは利用できません
+            {% endif %}
                 </ul>
             </div>
         </div>
