@@ -1,198 +1,330 @@
-p{
-    font-size: 13px;
-}
 h1{
-    font-size: 18px;
-    text-align: center;
+    font-size: 40px;
 }
 h2{
-    font-size: 15px;
+    font-size: 36px;
 }
-/* body{
-    height: 1200px;
-} */
-.header_top,
-.header_top_right{
-    display: flex;
+p{
+    font-size: 20px;
 }
-.header_top{
-    width: 80%;
-    margin: 60px auto 30px;
-}
-.header_top_right{
-    gap: 25px;
-    width: 100%;
-    justify-content: flex-end;
-}
-.header_bottom{
+
+header,
+main{
+    width: 90%;
     margin: 0 auto;
 }
-.header_bottom_list a{
-    text-decoration: none;
+header{
+    margin: 30px auto;
+    display: flex;
+    justify-content: space-between;
 }
-.header_bottom_list{
+.header_img{
+    width: 20%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.mypage_img{
+    width: 5%;
+}
+.top{
     display: flex;
     margin: 0 auto;
+    justify-content: space-between;
+    margin: 40px 0;
+}
+.top h2{
     text-align: center;
+}
+.top_news,
+.top_todo{
+    width: 45%;
+    padding: 20px;
+}
+.top_news_list ul li{
+    display: flex;
+    height: 170px;
+}
+.top_news_list ul li p{
+    width: 50%;
+    overflow: hidden;
+    margin: 10px;
+}
+.top_news_list ul li,
+.top_todo_list ul li{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+.top_news,
+.top_todo{
+    background-color: #5ac2dc;
+    border-radius: 20px;
+    opacity: 0.7;
+}
+.top_news_list ul{
+    background-color: #fff;
+    margin: 20px 0;
+    border-radius: 20px;
+}
+.top_todo_list ul{
+    margin: 20px 0;
+    border-radius: 20px;
+}
+.top_news_list img{
+    padding: 10px;
+}
+.circle{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #000;
+}
+.top_todo_list ul li{
+    height: 100px;
+    align-items: center;
+    border-radius: 20px;
+    background-color: #fff;
+}
+.top_todo_list ul li{
+    margin: 20px 0;
+}
+.plus {
+    display: inline-block;
+    vertical-align: middle;
+    color: #333;
+    line-height: 1;
+    width: 1em;
+    height: 0.1em;
+    background: currentColor;
+    border-radius: 0.1em;
+    position: relative;
+}
+  
+.plus::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: inherit;
+    transform: rotate(90deg);
+  }
+.all_news{
+    margin: 40px 0 0 0;
+}
+.tab {
+    display: flex;
     justify-content: center;
 }
-.header_bottom_list li{
-    padding: 0 12px;
-    border-radius: 10px 10px 0 0;
-    background-color: #5AC2DC;
-    opacity: 0.3;
-    height: 35px;
-}
-.item01{
-    background-color: blue;
-}
-.border_line{
-    border-bottom: 5px solid #5AC2DC;
-    opacity: 0.3;
-    width: 100%;
-}
-
-.header_bottom_list li.active{
-    transform: scale(1.1);
-    background-color: #5AC2DC;
-    opacity: 0.5;
-}
-.border_line.active{
-    opacity: 0.5;
-    border-bottom-color: #5AC2DC;
-}
-.border_bottom_list li p{
-    color: #5E5E85;
-}
-.border_bottom_list li.active p{
-    color: #fff;
-}
-main{
-    margin-bottom: 80px;
-}
-.main_line{
-    width: 90%;
-    height: 1px;
-    margin: 10px auto;
-    background-color: #5E5E85;
-}
-.main_box{
-    width: 90%;
-    margin: 0 auto;
-}
-.main_box ul{
-    display: flex;
-}
-.main_box ul h2{
-    width: 90%;
-    height: 100px;
-}
-.main_box ul img{
-    object-fit: cover;
-}
-.footer_list{
-    display: flex;
-    justify-content: space-around;
-    bottom: 0;
-    width: 90%;
-    left: 5%;
-    position: fixed;
-}
-.footer_list img{
-    width: 100%;
-    position: relative;
-    top: 10px;
-}
-footer{
-    height: 60px;
-    background-color: #F2F2F2;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    border-top: 2px solid #5E5E85;
-}
-.footer_line{
-    width: 2px;
-    height: 60px;
-    background-color: #5E5E85;
-}
-/* -------------TOP---------------- */
-/* ------------------------------ */
-/* -------------REGISTRATION-------- */
-
-.registration_logo{
-    margin: 60px auto 40px;
-    width: 30%;
-}
-.registration_main{
-    width: 90%;
-    max-width: 270px;
-    margin: 0 auto;
-    box-sizing: border-box;
-}
-.registration_form ul li{
-    padding: 10px 0;
-}
-.registration_form input{
-    width: 100%;
-    margin: 0 auto;
-    box-sizing: border-box;
-    border: 2px solid #5AC2DC;
-    opacity: 0.5;
-}
-.registration_form_birthday{
-    max-width: 270px;
-}
-.registration_form_birthday p{
+.tab li{
+    width: 15%;
+    background-color: #5ac2dc;
+    opacity: 0.7;
+    border-radius: 20px 20px 0 0;
+    text-align: center;
+    height: 40px;
     display: flex;
     align-items: center;
-    width: 27%;
-    box-sizing: border-box;
-    margin-right: 10px;
+    justify-content: center;
 }
-.registration_form_gender_radio,
-.registration_form_birthday{
-    display: flex;
-    gap: 10px;
+.tab li a{
+    text-decoration: none;
 }
-.registration_form_gender input{
-    width: 15px;
-}
-.registration_form_gender p{
-    font-size: 16px;
-}
-.registration_form input[type="date"],
-.registration_form input[type="text"]{
-    height: 34px;
+.tab_bar{
     width: 100%;
-    box-sizing: border-box;
-}
-.come{
-    color: red;
-}
-.registration_form_button{
-    width: 30%;
-    height: 34px;
-    background-color: #5AC2DC;
+    height: 10px;
+    border-radius: 20px 20px 0 0;
+    background-color: #5ac2dc;
     opacity: 0.7;
-    border-radius: 10px;
-    text-align: center;
-    left: 50%;
-    position: relative;
-    transform: translateX(-50%);
-    margin: 30px 0;
-    color: #fff
 }
-/* -------------REGISTRATION-------- */
-/* ------------------------------ */
-/* -------------GENRE-------------- */
+.all_news_list{
+    background-color: #5ac2dc;
+    opacity: 0.7;
+    border-radius: 0 0 20px 20px;
+    margin-bottom: 50px;
+}
+.all_news_list ul{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+.all_news_list ul li{
+    width: 80%;
+    height: 300px;
+    border-radius: 20px 20px 0 0;
+    padding: 10px;
+    justify-content: space-between;
+    margin: 0 auto;
+    border-radius: 20px;
+    margin: 20px;
+    background-color: #fff;
+}
+.all_news_list ul li p{
+    overflow: hidden;
+    white-space: normal;
+    word-wrap: break-word;
+    height: 20%;
+    margin: 10px;
+    text-align: center;
+}
+.active{
+    display: none;
+    background-color: #5ac2dc;
+    opacity: 1;
+    color: #fff;
+    transform: scale(1.1);
+}
 
-.genre_title{
-    width: 50%;
-    margin: 30px auto;
+/* -------------TOP------------- */
+/* ----------------------------- */
+/* -------------TODO------------- */
+
+.left_bottom{
+    background-color: #5ac2dc;
+    opacity: 0.7;
+    border-radius: 20px;
+    width: 18%;
+    padding: 20px;
+    height: 80vh;
+    position: fixed;
+}
+.left_bottom li{
     text-align: center;
 }
-.plus_icon {
+.arrow {
+    display: inline-block;
+    vertical-align: middle;
+    color: #000;
+    line-height: 1;
+    position: relative;
+    width: 15px;
+    height: 15px;
+    transform: translateX(-25%) rotate(45deg);
+  }
+  
+  .arrow::before, .arrow::after {
+    content: '';
+    position: absolute;
+    background: currentColor;
+    border-radius: 0.1em;
+  }
+  
+  .arrow::before {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 0.1em;
+  }
+  
+  .arrow::after {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 0.1em;
+  }
+  .Deadline_title,
+  .Tab_title,
+  .left_Priority h3{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #000;
+}
+.top_time{
+    height: 200px;
+    /* background-color: #5ac2dc; */
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 30px;
+    /* 仮置き */
+}
+.Deadline_list,
+.Tab_list{
+    display: none;
+}
+.left_top{
+    width: 20%;
+}
+.main_center{
+    background-color: rgba(203, 181, 169,0.2);
+    border-radius: 20px;
+}
+.main_center_top ul{
+    /* background-color: #fff; */
+    border-radius: 20px;
+    margin: auto 0;
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+}
+.main_center_top ul li{
+    margin: 5px;
+    background-color: #fff;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+}
+#progress {
+    width: 100%;
+    appearance: none; /* デフォルトのスタイルをリセット */
+    background-color: rgba(90, 194, 220, 0.3);
+    border-radius: 20px;
+}
+
+#progress::-webkit-progress-bar {
+    background-color: transparent; /* 背景色を透明に */
+}
+
+#progress::-webkit-progress-value {
+    background-color: initial; /* プログレスバーの色を初期化 */
+}
+
+#progress::-moz-progress-bar {
+    background-color: initial; /* Firefox用のプログレスバーの色を初期化 */
+}
+#progress::-webkit-progress-value {
+    background-color: #5ac2dc; /* プログレスバーの進捗部分の色 */
+    border-radius: 20px;
+}
+
+.main,
+.main_center_top{
+    display: flex;
+    justify-content: space-between;
+    height: 45vh;
+}
+.main_center{
+    width: 70%;
+}
+.main_center_top ul{
+    width: 50%;
+    padding: 20px;
+    gap: 5%;
+}
+.now_time{
+    width: 40%;
+    height: 80%;
+    margin: auto;
+}
+.Achievement_rate{
+    height: 45%;
+    padding: 30px 0;
+}
+.important{
+    height: 45%;
+    overflow: hidden;
+    white-space: normal;
+    word-wrap: break-word;
+}
+.add_task{
+    height: 20%;
+}
+.add_icon {
     display: inline-block;
     vertical-align: middle;
     color: #333;
@@ -203,103 +335,355 @@ footer{
     border-radius: 0.1em;
     position: relative;
   }
+  .add_icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: inherit;
+    transform: rotate(90deg);
+  }
+  .add_icon{
+    position: relative;
+    left: 90%;
+    transform: translateX(-90%);
+    top: -15px;
+  }
+  .main_bottom ul{
+    display: flex;
+    justify-content: space-between;
+  }
+  .main_bottom{
+    width: 100%;
+    height: 80vh;
+    background-color: rgba(203, 181, 169,0.2);
+    margin: 50px 0;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-around;
+  }
+  .main_bottom div{
+    width: 40%;
+    background-color: #fff;
+    border-radius: 20px;
+    margin: 30px 0;
+    overflow-y: scroll;
+  }
+  .main_bottom div h3{
+    text-align: center;
+    padding: 10px;
+  }
+  .main_bottom ul{
+    background-color: #5ac2dc;
+    border-radius: 20px;
+    opacity: 0.7;
+    height: 50px;
+    margin: 15px;
+  }
+  .main_bottom ul li{
+    margin: 10px auto;
+  }
+.completion ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/* .completion ul li{
+    background-color: #5ac2dc;
+    border-radius: 20px;
+    margin: 10px 0;
+} */
+.trash {
+    font-size: 100px;
+    position: relative;
+    width: 22px; /* 0.9emを18pxに変更 */
+    height: 24px; /* 1.2emを24pxに変更 */
+    border-left: 2px solid #000; /* 0.1emを2pxに変更 */
+    border-right: 2px solid #000; /* 0.1emを2pxに変更 */
+    border-bottom: 2px solid #000; /* 0.1emを2pxに変更 */
+    border-radius: 0 0 2px 2px; /* 0.1emを2pxに変更 */
+    background:
+        linear-gradient(to bottom, #000 0%, #000 100%) 4px 4px, /* 0.2emを4pxに変更 */
+        linear-gradient(to bottom, #000 0%, #000 100%) 8px 4px, /* 0.4emを8pxに変更 */
+        linear-gradient(to bottom, #000 0%, #000 100%) 12px 4px; /* 0.6emを12pxに変更 */
+    background-size: 2px 16px; /* 0.1emを2px、0.8emを16pxに変更 */
+    background-repeat: no-repeat;
+    left: 2px; /* 追加: 箱全体を右にずらす */
+}
+/* 蓋 */
+.trash::before {
+    content: "";
+    position: absolute;
+    top: -2px; /* -0.1emを-2pxに変更 */
+    left: -2.5px; /* -0.2emを-2pxに変更 */
+    width: 22px; /* 1.3emを22pxに変更 */
+    height: 2px; /* 0.1emを2pxに変更 */
+    background-color: #000;
+}
+/* 取っ手 */
+.trash::after {
+    content: "";
+    position: absolute;
+    top: -6px; /* -0.3emを-6pxに変更 */
+    left: 4px; /* 0.1emを4pxに変更 */
+    width: 10px; /* 0.5emを10pxに変更 */
+    height: 4px; /* 0.2emを4pxに変更 */
+    border-top: 2px solid #000; /* 0.1emを2pxに変更 */
+    border-left: 2px solid #000; /* 0.1emを2pxに変更 */
+    border-right: 2px solid #000; /* 0.1emを2pxに変更 */
+    border-radius: 2px 2px 0 0; /* 0.1emを2pxに変更 */
+}
 
-.plus_icon::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: inherit;
-border-radius: inherit;
-transform: rotate(90deg);
+/* ---------Todo--------- */
+/* ------------------------ */
+/* ---------Detail--------- */
+
+.detail_box h1{
+    text-align: center;
 }
-.before_click{
-    width: 90%;
-    max-width: 270px;
-    margin: 0 auto;
-    display: flex;
+.detail_box{
+    width: 35%;
+    margin: 10% auto;
+    height: 70vh;
+    background-color: #5ac2dc;
+    padding: 20px;
+    border-radius: 20px;
 }
-.before_click ul{
+.detail_box_top{
     display: flex;
     justify-content: space-around;
-    width: 100%;
-    max-width: 270px;
-    box-shadow: 0 4px 5px 0 #000;
+}
+.detail_box_checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    border: 2px solid #000;
+    position: relative;
+    cursor: pointer; /* カーソルをポインターに */
+    background-color: #fff;
+}
+
+.detail_box_checkbox:checked {
+    background-color: #fff;
+}
+
+.detail_box_checkbox:checked::after {
+    content: '';
+    position: absolute;
+    top: 0px; /* チェックマークの位置を調整 */
+    left: 8px; /* チェックマークの位置を調整 */
+    width: 10px; /* チェックマークの幅 */
+    height: 20px; /* チェックマークの高さ */
+    border: solid #000;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+.detail_box_input{
+    width: 80%;
+    height: 40vh;
+}
+.detail_box_input_box{
+    text-align: center;
+    margin: 5%;
+}
+.detail_box_input {
+    width: 80%;
+    height: 40vh;
+    appearance: none;
+    -webkit-appearance: none;
+    border: 1px solid #000;
     border-radius: 10px;
+    padding: 10px; /* 内側の余白を設定 */
 }
-.before_click ul li{
-    height: 28px;
-}
-.active{
-    width: 90%;
-    max-width: 270px;
+.detail_box_button{
     display: flex;
     justify-content: space-around;
+}
+.detail_box_button li{
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 10px;
+    width: 20%;
+    text-align: center;
+}
+.main{
+    position: relative;
+}
+.click_detail{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
     width: 100%;
-    color: #000;
+    height: 100%;
+}
+
+/* ----------detail---------- */
+/* ----------------------------- */
+/* ----------genre---------- */
+
+.genre_all{
+    width: 70%;
+    margin: 0 auto;
+    position: relative;
+}
+.genre_list_all{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-between;
+}
+.genre_list_all li{
+    width: 80%;
+    height: 10vh;
+    background-color: #5ac2dc;
+    opacity: 0.7;
+    border-radius: 20px;
+    text-align: center;
+    margin: 10%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.genre_detail{
+    width: 70%;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.genre_detail h1{
+    text-align: center;
+}
+.genre_detail_list{
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+.genre_detail_list li{
+    background: #5ac2dc;
+    opacity: 0.7;
+    border-radius: 20px;
+    margin: 5%;
+    height: 8vh;
+    display: flex;
     align-items: center;
-    margin: 0 auto;
+    justify-content: center;
+    /* position: absolute; */
 }
-.after_click ul li{
-    width: 90%;
-    text-align: start;
-    margin: 0 auto;
-    max-width: 270px;
-    padding: 10px 0;
-}
-.after_click ul{
-    box-shadow: 0 4px 5px 0 #000;
-    border-radius: 10px;
-    max-width: 270px;
-    margin: 0 auto;
-}
-.after_click{
+.click_genre{
     display: none;
 }
-.minus_icon {
-    display: inline-block;
-    vertical-align: middle;
-    color: #333;
-    line-height: 1;
-    width: 20px;
-    height: 4px;
-    background: currentColor;
-    border-radius: 0.1em;
-}
-/* -------------GENRE-------------- */
-/* ------------------------------ */
-/* -------------LOGIN-------------- */
-
-.login_main{
-    text-align: center;
+.genre_detail{
+    width: 70%;
     margin: 0 auto;
-    margin-top: 100px;
-    max-width: 270px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    position: fixed;
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 80vh;
 }
-.login_main h1,
-.login_button{
-    margin: 50px 0;
+/* ---------genre---------- */
+/* ----------------------------- */
+/* ---------registration--------- */
+.registration_main h1{
+    text-align: center;
 }
-.login_form_ul input[type="text"]{
+.registration_form{
+    margin: 5% auto;
+    width: 40%;
+    text-align: center;
+}
+.registration_form ul{
+    width: 60%;
+    margin: 0 auto;
+}
+.registration_form input{
     width: 100%;
-    box-sizing: border-box;
-    border: 2px solid #5AC2DC;
-    opacity: 0.5;
-    max-width: 270px;
 }
-.login_form_ul li{
-    padding: 10px 0;
+.registration_form ul li{
     text-align: start;
 }
-.login_button{
-    width: 40%;
-    height: 34px;
-    background-color: #5AC2DC;
-    opacity: 0.7;
+.registration_form_gender_radio,
+.registration_form_gender_radio p{
+    display: flex;
+    justify-content: space-between;
+}
+.registration_form_gender_radio input{
+    width: 10px;
+}
+.registration_form input[type="text"],
+.registration_form input[type="date"]{
+    border: 2px solid #5ac2dc;
+}
+.registration_form_button{
+    background-color: #5ac2dc;
     border-radius: 10px;
+    padding: 10px;
+    width: 20%;
+    text-align: center;
+    margin: 30px 0;
+}
+/* ---------registration--------- */
+/* ----------------------------- */
+/* -----------login----------- */
+.login_form ul li{
+    margin: 20px 0;
+}
+
+
+/* ---------todo_time--------- */
+
+
+
+
+.edge-clock {
+    width: 100%; /* 時計のサイズを設定 */
+    height: 350px;
+    border: 8px solid #333;
+    border-radius: 50%;
+    position: relative;
+    background: white;
+}
+
+.clock-face {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: translateY(-3px); /* 時計の中心を調整 */
+}
+
+.hand {
+    width: 50%;
+    height: 6px;
+    background: #333;
+    position: absolute;
+    top: 50%;
+    transform-origin: 100%;
+    transform: rotate(90deg);
+    transition: all 0.05s;
+    transition-timing-function: ease-in-out;
+}
+
+.hour-hand {
+    height: 8px;
+    background: #000;
+}
+
+.min-hand {
+    height: 6px;
+    background: #666;
+}
+
+.sec-hand {
+    height: 4px;
+    background: #f00;
 }

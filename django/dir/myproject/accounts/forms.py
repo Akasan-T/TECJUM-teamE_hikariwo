@@ -9,30 +9,35 @@ User = get_user_model()
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
-        # モデルに合わせて必要なフィールドを指定してください
+        # モデルの定義に合わせて必要なフィールドを指定してください
         fields = ('username', 'email', 'name', 'furigana', 'age', 'gender')
 
 # カスタム認証フォーム（ユーザー名またはメールアドレスで認証）
 class CustomAuthenticationForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # ラベルを変更しておくなどのカスタマイズ
         self.fields['username'].label = "ユーザー名またはメールアドレス"
 
     def clean(self):
         username = self.cleaned_data.get('username')
         password = self.cleaned_data.get('password')
         if username and password:
-            # 入力に '@' が含まれているならメールアドレスとしてユーザーを検索
+            # メールアドレスとして認証を試みる
             if '@' in username:
                 try:
                     user_obj = User.objects.get(email=username)
                     username = user_obj.username
                 except User.DoesNotExist:
-                    pass  # 該当ユーザーがなければそのまま進む（後で認証エラーになる）
+                    raise forms.ValidationError(
+                        "ログインに失敗しました。正しいユーザー名またはパスワードを入力してください。",
+                        code='invalid_login'
+                    )
             self.user_cache = authenticate(self.request, username=username, password=password)
             if self.user_cache is None:
-                raise self.get_invalid_login_error()
+                raise forms.ValidationError(
+                    "ログインに失敗しました。正しいユーザー名またはパスワードを入力してください。",
+                    code='invalid_login'
+                )
             else:
                 self.confirm_login_allowed(self.user_cache)
         return self.cleaned_data

@@ -1,0 +1,24 @@
+<!-- templates/auto_news_display.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>取得したニュース情報</title>
+</head>
+<body>
+    <h1>取得したニュース情報</h1>
+    
+    <p><strong>タイトル:</strong> {{ title }}</p>
+    
+    {% if image_url %}
+        <p><strong>画像:</strong></p>
+        <img src="{{ image_url }}" alt="取得した画像" style="max-width:300px;">
+    {% else %}
+        <p>画像は見つかりませんでした。</p>
+    {% endif %}
+    
+    <p><strong>元のURL:</strong> <a href="{{ url }}" target="_blank">{{ url }}</a></p>
+    
+    <p><a href="{% url 'auto_add_news' %}">別のURLを取得する</a></p>
+</body>
+</html>

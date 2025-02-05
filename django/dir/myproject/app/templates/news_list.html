@@ -1,0 +1,57 @@
+<!-- templates/news_list.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ニュース記事一覧</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 20px; }
+      h1 { color: #333; }
+      h2 { border-bottom: 1px solid #ccc; padding-bottom: 5px; }
+      .article { margin-bottom: 15px; }
+      .article-title { font-size: 1.2em; margin: 0; }
+      .article-meta { font-size: 0.9em; color: #555; }
+    </style>
+</head>
+<body>
+    <h1>ニュース記事一覧</h1>
+    <p><a href="{% url 'auto_add_news' %}">記事を追加する</a></p>
+    
+    {% regroup articles by category as grouped_articles %}
+    
+    {% for group in grouped_articles %}
+    <section>
+        <h2>カテゴリ: {{ group.grouper }}</h2>
+        <ul>
+            {% for article in group.list %}
+                <li class="article">
+                    <strong class="article-title">{{ article.title }}</strong>
+                    {% if article.image %}
+                        <br><img src="{{ article.image.url }}" alt="{{ article.title }}" >
+                    {% else %}
+                        <!-- 画像が設定されていない場合、デフォルト画像を表示 -->
+                        <br><img src="/static/images/default.png" alt="デフォルト画像" style="max-width:200px;">
+                    {% endif %}
+                    <p>{{ article.content|truncatewords:30 }}</p>
+                    
+                    <!-- 追記：元記事とハードコードの投稿日を表示 -->
+                    <div class="article-meta">
+                        <p>元記事: <a href="https://unison-career.com/engineer-media/7492/" target="_blank">SE（システムエンジニア）はブラックなの？優良企業の見分け方を解説</a></p>
+                        <p>投稿日: 2025/02/04 17:41</p>
+                    </div>
+                    
+                    <!-- 既存の投稿日表示（記事保存時の日付） -->
+                    <p>記事登録日時: {{ article.created_at|date:"Y/m/d H:i" }}</p>
+                    <p>
+                        <a href="{% url 'news_edit' article.pk %}">編集</a> |
+                        <a href="{% url 'news_delete' article.pk %}">削除</a>
+                    </p>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% empty %}
+    <p>記事はありません。</p>
+    {% endfor %}
+</body>
+</html>

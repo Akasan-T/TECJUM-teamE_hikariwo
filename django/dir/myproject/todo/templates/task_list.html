@@ -1,0 +1,186 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/24reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+    <title>ToDo</title>
+</head>
+<body>
+    <script>
+        $(document).ready(function(){
+            // タスク一覧内のタスク項目をクリックしたときの処理
+            $('.task-item').click(function(){
+                // data属性から各情報を取得
+                var title = $(this).data('title');
+                var dueDate = $(this).data('due-date');
+                var description = $(this).data('description');
+                var pk = $(this).data('pk');
+                
+                // 詳細表示部分の内容を更新
+                $('.detail_box h1').text(title);
+                $('.detail_box_top p').text(dueDate);
+                $('.detail_box_input').val(description);
+            });
+        });
+    </script>
+    <h1>ToDo List</h1>
+<a href="{% url 'todo:task_create' %}">新しいタスクを追加</a>
+<ul>
+    {% for task in tasks %}
+        <li>
+            {{ task.title }} ({{ task.get_priority_display }}) - 
+            {% if task.due_date %}
+                期日: {{ task.due_date|date:"Y/m/d" }} - 
+            {% endif %}
+            <a href="{% url 'todo:task_complete' task.pk %}">タスク完了</a> - 
+            <a href="{% url 'todo:task_edit' task.pk %}">編集</a> - 
+            <a href="{% url 'todo:task_delete' task.pk %}">削除</a>
+        </li>
+    {% endfor %}
+</ul>
+    <header>
+        <img class="header_img" src="{% static 'images/logo.png' %}" alt="ロゴ">
+    </header>
+    <main class="main">
+        <div class="left_top">
+            <div class="top_time">
+                <p>時計</p>
+            </div>
+            <div class="left_bottom">
+                <div class="left_Deadline">
+                    <div class="Deadline_title">
+                        <h3>期限</h3>
+                        <p class="arrow"></p>
+                    </div>
+                    <ul>
+                        <li>今日</li>
+                        <li>明日</li>
+                        <li class="Deadline_list">今週</li>
+                        <li class="Deadline_list">今月</li>
+                        <li class="Deadline_list">期限なし</li>
+                        <!-- クリックしたら表示 -->
+                    </ul>
+                </div>
+                <div class="left_Priority">
+                    <h3>優先度</h3>
+                    <ul>
+                        <li>高</li>
+                        <li>中</li>
+                        <li>低</li>
+                    </ul>
+                </div>
+                <div class="left_Tab">
+                    <div class="Tab_title">
+                        <h3>タブ</h3>
+                        <p class="arrow"></p>
+                    </div>
+                    <ul>
+                        <li>タブテキスト01</li>
+                        <li>タブテキスト02</li>
+                        <li>タブテキスト03</li>
+                        <li class="Tab_list">タブテキスト04</li>
+                        <li class="Tab_list">タブテキスト05</li>
+                        <li class="Tab_list">タブテキスト06</li>
+                        <li class="Tab_list">タブテキスト07</li>
+                        <li class="Tab_list">タブテキスト08</li>
+                        <li class="Tab_list">タブテキスト09</li>
+                        <li class="Tab_list">タブテキスト10</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="main_center">
+            <div class="main_center_top">
+                <ul>
+                    <li class="Achievement_rate">
+                        <p>達成率</p>
+                        <label class="">
+                            <progress max="100" value="37" id="progress"></progress>
+                        </label>
+                    </li>
+                    <li class="important">
+                        <div class="important_title">
+                            <p>重要</p>
+                            <p class="important_icon"></p>
+                        </div>
+                        <p>タスクテキスト</p>
+                        <p>タスクテキスト</p>
+                    </li>
+                    <li class="add_task">
+                        <p>タスクの追加</p>
+                        <p class="add_icon"></p>
+                    </li>
+                </ul>
+                <div class="now_time">
+                    <p>時計</p>
+                </div>
+            </div>
+            <div class="main_bottom">
+                <div class="Incomplete">
+                    <h3>未完了</h3>
+                    {% for task in tasks %}
+                        <!-- 各タスク項目に data- 属性で必要な情報を設定 -->
+                        <ul class="task-item" 
+                            pk="{{ task.pk }}"
+                            data-title="{{ task.title }}" 
+                            data-due-date="{% if task.due_date %}{{ task.due_date|date:'Y/m/d' }}{% else %}期限未定{% endif %}" 
+                            data-description="{{ task.description|default:'' }}">
+                            <li>{{ task.title }}</li>
+                            <li>
+                                {% if task.due_date %}
+                                    {{ task.due_date|date:"Y/m/d" }}
+                                {% else %}
+                                    期限未定
+                                {% endif %}
+                            </li>
+                        </ul>
+                    {% endfor %}
+                </div>
+                <div class="completion">
+                    <h3>完了</h3>
+                    <section>
+                        <ul>
+                            {% for task in completed_tasks %}
+                                <li>
+                                    {{ task.title }}
+                                    <!-- 必要に応じて詳細情報や操作リンクなど -->
+                                </li>
+                            {% empty %}
+                                <li>完了したタスクはありません。</li>
+                            {% endfor %}
+                        </ul>
+                    </section>
+    </main>
+    <footer>
+        <div class="detail click_detail">
+            <div class="detail_box">
+                <h1>タスクタイトル</h1>
+                <div class="detail_box_top">
+                    <p>xxxx/xx/xx</p>
+                    <input type="checkbox" class="detail_box_checkbox">
+                </div>
+                <div class="detail_box_input_box">
+                    <textarea class="detail_box_input"></textarea>
+                </div>
+                <ul class="detail_box_button">
+                    {% if task.pk %}
+                    <a href="{% url 'todo:task_edit' task.pk %}">編集</a>
+                {% else %}
+                    編集できません
+                {% endif %}
+                {% if task.pk %}
+                <a href="{% url 'todo:task_delete' task.pk %}">削除</a>
+            {% else %}
+                削除リンクは利用できません
+            {% endif %}
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

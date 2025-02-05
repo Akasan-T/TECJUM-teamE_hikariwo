@@ -1,4 +1,5 @@
-from django.urls import path,include
+# accounts/urls.py
+from django.urls import path
 from .views import register, CustomLoginView
 
 urlpatterns = [

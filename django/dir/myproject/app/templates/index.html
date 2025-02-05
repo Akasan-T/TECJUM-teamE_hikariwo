@@ -1,85 +1,192 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../style/24reset.css">
-    <link rel="stylesheet" href="../../style/style.css">
-    <script src="../../style/script.js"></script>
+    <link rel="stylesheet" href="{% static 'css/24reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        /* 新着記事の内容を左右に並べる */
+    .article-content_top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+    }
+/* 左側のテキスト部分 */
+    .article-text_top {
+        flex: 1;
+        padding-right: 10px;
+    }
+
+/* 右側の画像部分 */
+    .article-image_top {
+        flex: 0 0 auto;
+    }
+    .news-category ul {
+display: flex;
+flex-wrap: wrap;
+  gap: 10px;        /* 各記事間の余白 */
+  list-style: none; /* リストマーカーの削除 */
+padding: 0;
+margin: 0;
+}
+
+.news-category li.article {
+  flex: 0 0 280px;  /* 各記事の幅を指定（必要に応じて調整） */
+border: 1px solid #ddd;
+padding: 5px;
+box-sizing: border-box;
+}
+.no-articles-message { display: none; font-style: italic; color: #777; text-align: center; padding: 200px;}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" href="{% static 'js/script.js' %}"></script>
     <title>TOP</title>
 </head>
 <body>
     <header>
-        <div class="header_top">
-            <img src="../../img/logo.png" alt="ロゴ">
-            <ul class="header_top_right">
-                <li><img src="../../img/カレンダー/date.png" alt="カレンダー"></li>
-                <li><img src="../../img/カレンダー/Sunny.png" alt="天気"></li>
-            </ul>
-        </div>
-        <nav class="header_bottom">
-            <ul class="header_bottom_list">
-                <li><p><a href="#">マナー</a></p></li>
-                <li><p><a href="#">健康</a></p></li>
-                <li><p><a href="#">筋トレ</a></p></li>
-                <li><p><a href="#">モテ活</a></p></li>
-                <li><p><a href="#">ダイエット</a></p></li>
-            </ul>
-            <p class="border_line" id="border_line"></p>
-        </nav>
+        <img class="header_img" src="{% static 'images/logo.png' %}" alt="ロゴ">
+        <img class="mypage_img" src="{% static 'images/mypage.png' %}" alt="マイページ">
     </header>
     <main>
-        <p class="main_line"></p>
-        <div class="main_box">
-            <ul>
-                <li><h2>サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキスト</h2></li>
-                <li><img src="../../img/sample.jpeg" alt="ニュース画像"></li>
-            </ul>
+        <div class="top">
+            <div class="top_news">
+                <h2>新着</h2>
+                <div class="top_news_list">
+                    <ul>
+                        {% for article in newest_articles %}
+                            <li class="article" style="display: flex; justify-content: end; width: 100%;">
+                                {% if article.source_url %}
+                                <a class="article_link" href="{{ article.source_url }}" target="_blank" style="text-decoration: none; color: inherit;">
+                                {% endif %}
+                                    <div class="article-content_top">
+                                        <!-- 左側：テキスト -->
+                                        <div class="article-text_top">
+                                            <strong class="article-title">{{ article.title }}</strong>
+                                        </div>
+                                        <!-- 右側：画像 -->
+                                        <div class="article-image_top">
+                                            {% if article.image %}
+                                                <img src="{{ article.image.url }}" alt="{{ article.title }}" style="width: 200px;">
+                                            {% else %}
+                                                <img src="{% static 'images/sample.jpeg' %}" alt="デフォルト画像" style="max-width:200px;">
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% if article.source_url %}
+                                </a>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="top_todo">
+                <h2>ToDo</h2>
+                <div class="top_todo_list">
+                    <ul>
+                        {% for task in tasks|slice:":4" %}
+                            <li>
+                                <p>{{ task.title }}</p>
+                                <p class="circle"></p>
+                            </li>
+                        {% empty %}
+                            <li>タスクがありません。</li>
+                        {% endfor %}
+                        <li>
+                            <p><a href="{% url 'todo:task_list' %}" style="display: block;">全てのタスクを表示</a></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <p class="main_line"></p>
-        <div class="main_box">
-            <ul>
-                <li><h2>サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキスト</h2></li>
-                <li><img src="../../img/sample.jpeg" alt="ニュース画像"></li>
+        <div class="all_news">
+            <ul class="tab">
+                <li class="tab_item active" data-category="cat1">
+                    <a href="#">{{ category_map.cat1 }}</a>
+                </li>
+                <li class="tab_item" data-category="cat2">
+                    <a href="#">{{ category_map.cat2 }}</a>
+                </li>
+                <li class="tab_item" data-category="cat3">
+                    <a href="#">{{ category_map.cat3 }}</a>
+                </li>
+                <li class="tab_item" data-category="cat4">
+                    <a href="#">{{ category_map.cat4 }}</a>
+                </li>
+                <li class="tab_item" data-category="cat5">
+                    <a href="#">{{ category_map.cat5 }}</a>
+                </li>
+                <li class="tab_item" data-category="all">
+                    <a href="#">すべて表示</a>
+                </li>
             </ul>
+            <p class="tab_bar"></p>
         </div>
-        <p class="main_line"></p>
-        <div class="main_box">
-            <ul>
-                <li><h2>サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキスト</h2></li>
-                <li><img src="../../img/sample.jpeg" alt="ニュース画像"></li>
-            </ul>
+        
+        <div class="all_news_list">
+            <div class="no-articles-message">
+                <p>記事が存在しません。</p>
+            </div>
+            {% regroup articles by category as grouped_articles %}
+            {% for group in grouped_articles %}
+            <section class="news-category" data-category="{{ group.grouper }}">
+                <ul>
+                    {% for article in group.list %}
+                        <li class="article">
+                            {% if article.source_url %}
+                                <a class="article_link" href="{{ article.source_url }}" target="_blank" style="text-decoration: none; color: inherit;">
+                            {% endif %}
+                                    {% if article.image %}
+                                        <br><img src="{{ article.image.url }}" alt="{{ article.title }}" style="max-width:200px;">
+                                    {% else %}
+                                        <br><img src="{% static 'images/sample.jpeg' %}" alt="デフォルト画像" style="max-width:200px;">
+                                    {% endif %}
+                                    <strong class="article-title">{{ article.title }}</strong>
+                            {% if article.source_url %}
+                                </a>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </section>
+            {% empty %}
+            <p>ニュース記事はまだありません。</p>
+            {% endfor %}
         </div>
-        <p class="main_line"></p>
-        <div class="main_box">
-            <ul>
-                <li><h2>サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキスト</h2></li>
-                <li><img src="../../img/sample.jpeg" alt="ニュース画像"></li>
-            </ul>
-        </div>
-        <p class="main_line"></p>
-        <div class="main_box">
-            <ul>
-                <li><h2>サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキスト</h2></li>
-                <li><img src="../../img/sample.jpeg" alt="ニュース画像"></li>
-            </ul>
-        </div>
-        <p class="main_line"></p>
-        <div class="main_box">
-            <ul>
-                <li><h2>サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキスト</h2></li>
-                <li><img src="../../img/sample.jpeg" alt="ニュース画像"></li>
-            </ul>
-        </div>
+        
     </main>
-    <footer>
-        <ul class="footer_list">
-            <li><img src="../../img/home.png" alt="ホーム"></li>
-            <li><p class="footer_line"></p></li>
-            <li><img src="../../img/ToDo.png" alt="ToDo"></li>
-            <li><p class="footer_line"></p></li>
-            <li><img src="../../img/setting.png" alt="設定"></li>
-        </ul>
-    </footer>
+
+    <script>
+        $(document).ready(function(){
+            $('.tab_item').click(function(e) {
+                e.preventDefault();
+                $('.tab_item').removeClass('active');
+                $(this).addClass('active');
+                var selectedCategory = $(this).data('category');
+    
+                if(selectedCategory === 'all') {
+                    $('.news-category').show();
+                } else {
+                    $('.news-category').hide();
+                    $('.news-category').each(function(){
+                        if($(this).data('category') === selectedCategory) {
+                            $(this).show();
+                        }
+                    });
+                }
+                // all_news_list 内で表示されているニュースセクションがなければメッセージを表示
+                if ($('.all_news_list .news-category:visible').length === 0) {
+                    $('.all_news_list .no-articles-message').show();
+                } else {
+                    $('.all_news_list .no-articles-message').hide();
+                }
+            });
+        });
+        </script>
 </body>
 </html>
+
+

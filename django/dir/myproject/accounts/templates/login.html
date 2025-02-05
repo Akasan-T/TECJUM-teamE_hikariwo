@@ -4,34 +4,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 静的ファイルのパス -->
     <link rel="stylesheet" href="{% static 'css/24reset.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
     <title>ログイン</title>
 </head>
 <body>
     <header>
         <img class="registration_logo" src="{% static 'images/logo.png' %}" alt="ロゴ">
     </header>
-    <main class="login_main">
-        <h1 style="font-size: 30px;">ログイン</h1>
-        <!-- Django のログインビューを利用する場合、action 属性にはログイン URL を指定 -->
-        <form method="post" action="{% url 'login' %}">
-            {% csrf_token %}
+    <main class="registration_main login_main">
+        <h1>ログイン</h1>
             <div class="login_form">
-                <ul class="login_form_ul">
+                <ul>
                     <li>
-                        <h2>メールアドレス</h2>
-                        <input type="text" name="username" placeholder="example@gmail.com">
+                        <h3>ユーザー名またはメールアドレス</h3>
+                        <input type="text" name="username">
                     </li>
                     <li>
-                        <h2>パスワード</h2>
-                        <input type="text" name="password" placeholder="********">
+                        <h3>パスワード </h2>
+                        <input type="text" placeholder="password1234" name="password1234">
                     </li>
                 </ul>
             </div>
-            <button class="login_button" type="submit">ログイン</button>
-        </form>
+            <button  class="registration_form_button" type="submit">ログイン</button>
     </main>    
 </body>
+<!-- <body>
+    <header>
+        <img class="header_img" src="../../img/logo.png" alt="ロゴ">
+    </header>
+    <main class="registration_main login_main">
+        <h1>ログイン</h1>
+        <div class="registration_form login_form">
+            <ul>
+                <li>
+                     <h3>メールアドレス </h2>
+                    <input type="text" placeholder="example@gmail.com">
+                </li>
+                <li>
+                     <h3>パスワード </h2>
+                    <input type="text" placeholder="password1234">
+                </li>
+                <button class="registration_form_button">ログイン</button>
+        </div>
+    </main>
+</body> -->
 </html>
+</html>
+
+

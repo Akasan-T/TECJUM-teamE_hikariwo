@@ -1,0 +1,22 @@
+<h1>{{ form.instance.pk|default:"新しいタスクを追加" }}</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">保存</button>
+</form>
+
+<script>
+    $(document).ready(function(){
+        // Datepickerを適用する要素を指定（例えば、due_dateの入力フィールド）
+        $('input[type="date"]').datepicker({
+            dateFormat: 'yy/mm/dd'  // 日付形式を指定（例: 2025/02/09）
+        });
+    });
+    $(document).ready(function(){
+        $('input[type="date"]').datepicker({
+            dateFormat: 'yy/mm/dd',
+            changeMonth: true,  // 月を変更できるようにする
+            changeYear: true    // 年を変更できるようにする
+        });
+    });
+</script>
